@@ -72,7 +72,7 @@ async function fetchPaper() {
 
             p.innerHTML = words.map((word, index) => {
                 
-                return `<span class="label" style="color: ${color};">${word}</span>`;
+                return `<span class="label" style="color: ${colors[index % baseColorCount]};">${word}</span>`;
             }).join(' ');
         }
         button.disabled = false;
