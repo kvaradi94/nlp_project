@@ -1,0 +1,36 @@
+facebook/bart-large-cnn
+Summarizing articles: 100%|█████████████████████████████████████████████████████████████████████| 1000/1000 [29:26<00:00,  1.77s/it]
+{'rouge1': 0.33543048628168715, 'rouge2': 0.14371904078227607, 'rougeL': 0.24673995087695602, 'rougeLsum': 0.2855498410242534}
+
+sshleifer/distilbart-cnn-12-6
+Summarizing articles: 100%|███████████████████████████████████████████████████████████████████████████| 1000/1000 [21:13<00:00,  1.27s/it]
+{'rouge1': 0.3389051245019236, 'rouge2': 0.14278800367467276, 'rougeL': 0.24555375267382823, 'rougeLsum': 0.28310418771240864}
+
+elapsed time (sec) of the llm answer: (Explain what the given paper is about and what are the presented results.)
+0.5B:
+1: 4.67 / 420 (pdf content: 64828) char/sec: 89.94 
+2: 5.89 / 659 (pdf content: 77637) char/sec: 111.84
+3: 6.69 / 722 (pdf content: 77642) char/sec: 115.40
+4: 4.53 / 459 (pdf content: 47044) char/sec: 101.32
+5: 5.62 / 529 (pdf content: 52043) char/sec: 94.13
+
+1.5B:
+1: 16.64 / 527 (pdf content: 64828) char/sec: 31.67
+2: 34.26 / 1258 (pdf content: 77637) char/sec: 36.72
+3: 73.94 / 3131 (pdf content: 77642) char/sec: 42.35
+4: 36.95 / 1604 (pdf content: 47044) char/sec: 43.41
+5: 83.00 / 3256 (pdf content: 52043) char/sec: 39.23
+
+deepseek:
+thinking included
+1: 122.49 / 3190 (pdf content: 64828) char/sec: 26.04
+2: 107.41 / 3102 (pdf content: 77637) char/sec: 28.88
+3: 124.10 / 4401 (pdf content: 77642) char/sec: 35.46
+4: 102.73 / 3279 (pdf content: 47044) char/sec: 31.92
+5: 162.91 / 5437 (pdf content: 52043) char/sec: 33.37
+thinking not included
+1: 122.49 / 601 (pdf content: 64828) char/sec: 4.9
+2: 107.41 / 1344 (pdf content: 77637) char/sec: 12.51
+3: 124.10 / 1649 (pdf content: 77642) char/sec: 13.29
+4: 102.73 / 1626 (pdf content: 47044) char/sec: 15.83
+5: 162.91 / 1968 (pdf content: 52043) char/sec: 12.08

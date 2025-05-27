@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/app_styles.css">
+    <title>ArxIver</title>
+</head>
+
+<body>
+    <h1 class="title">ArxIver</h1>
+    <h3 class="subtitle">Your AI Research Assitant - Finds, Summarizes & Explains the Latest Papers from arXiv<h3>
+    <div class="settings">
+        <div class="slidecontainer">
+            <p>Consider articles that are published in the past <span id="lastXDaysValue"></span> days.</p>
+            <input type="range" min="1" max="30" value="7" class="slider" id="lastXDaysRange">
+        </div>
+        <div class="slidecontainer">
+            <p>Max number of articles to show: <span id="maxNumOfArticlesValue"></span></p>
+            <input type="range" min="1" max="100" value="10" class="slider" id="maxNumOfArticlesRange">
+        </div>
+        <div class="slidecontainer">
+            <button class="button" id="get-articles">GET ARTICLES</button>
+        </div>
+    </div>
+
+    <div class="processing-status" id="processing-status" hidden>
+        <span class="loaded-status" id="loaded-status">Processed articles:
+            <span class="loaded" id="loaded">0</span> /
+            <span class="req-to-load" id="req-to-load"></span>
+            <div class="loader" id="loader"></div>
+        </span>
+    </div>
+
+    <div class="configurations">
+        Select a category:
+        <div class="radio-group">
+            <input type="radio" id="option-cs" name="options" class="radio-option" value="Option 1" checked>
+            <label for="option-cs" class="radio-label">Computer Science</label>
+
+            <input type="radio" id="option-econ" name="options" class="radio-option" value="Option 2">
+            <label for="option-econ" class="radio-label">Economics</label>
+
+            <input type="radio" id="option-electric" name="options" class="radio-option" value="Option 3">
+            <label for="option-electric" class="radio-label">Electrical Engineering and Systems Science</label>
+
+            <input type="radio" id="option-math" name="options" class="radio-option" value="Option 4">
+            <label for="option-math" class="radio-label">Mathematics</label>
+
+            <input type="radio" id="option-physics" name="options" class="radio-option" value="Option 4">
+            <label for="option-physics" class="radio-label">Physics</label>
+
+            <input type="radio" id="option-biology" name="options" class="radio-option" value="Option 4">
+            <label for="option-biology" class="radio-label">Quantitative Biology</label>
+
+            <input type="radio" id="option-finance" name="options" class="radio-option" value="Option 4">
+            <label for="option-finance" class="radio-label">Quantitative Finance</label>
+
+            <input type="radio" id="option-statistics" name="options" class="radio-option" value="Option 4">
+            <label for="option-statistics" class="radio-label">Statistics</label>
+        </div>
+
+        Select a topic:
+        <select class="select" id="topic-select">
+            <!-- Options will be inserted by JavaScript -->
+        </select>
+
+        Title filter:
+        <input type="text" class="title-input", id="title-input" placeholder="Search by title (optional)">
+
+        Select a summarizer model:
+        <select class="select" id="summarizer-select">
+            <option value="facebook/bart-large-cnn">facebook/bart-large-cnn</option>
+            <option value="sshleifer/distilbart-cnn-12-6">sshleifer/distilbart-cnn-12-6</option>
+        </select>
+
+        Select an embedding model:
+        <select class="select" id="embedding-select">
+            <option value="sentence-transformers/all-mpnet-base-v2">sentence-transformers/all-mpnet-base-v2</option>
+            <option value="sentence-transformers/all-MiniLM-L6-v2">sentence-transformers/all-MiniLM-L6-v2</option>
+        </select>
+
+        Select an LLM model:
+        <select class="select" id="llm-select">
+            <option value="Gensyn/Qwen2.5-1.5B-Instruct">Gensyn/Qwen2.5-1.5B-Instruct</option>
+            <option value="Gensyn/Qwen2.5-0.5B-Instruct">Gensyn/Qwen2.5-0.5B-Instruct</option>
+            <option value="deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B">deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B</option>
+        </select>
+    </div>
+
+    <div class="container">
+
+        <div class="articles" id="articles">
+            <!-- icon.png was generated with ChatGPT. -->
+            <img src="icon.png" class="icon-image">
+            <!-- Article cards will be inserted here by JavaScript -->
+
+            <!-- <div class="article-card">
+                <div class="article-content">
+                    <h2 class="article-title" id="article-${id}-title">${article.title}</h2>
+                    <div class="pdf-link">
+                        [
+                        <a href="${article.url}" target="_blank" class="article-link" id="article-${id}-url">
+                            pdf
+                        </a>
+                        ]
+                    </div>
+                    <p class="article-abstract" id="article-${id}-abstract">${article.abstract}</p>
+                    <div class="article-footer">
+                        <p class="labels" id="labels-${id}">${article.keywords}<p>
+                        <button class="ai-discussion-button" id="ai-discussion-button">Discuss the paper with AI</button>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <script src="scripts/query_settings.js"></script>
+    <script src="scripts/topics/cs_topics.js"></script>
+    <script src="scripts/topics/econ_topics.js"></script>
+    <script src="scripts/topics/electric_topics.js"></script>
+    <script src="scripts/topics/math_topics.js"></script>
+    <script src="scripts/topics/physics_topics.js"></script>
+    <script src="scripts/topics/biology_topics.js"></script>
+    <script src="scripts/topics/finance_topics.js"></script>
+    <script src="scripts/topics/statistics_topics.js"></script>
+    <script src="scripts/topics/topics.js"></script>
+    <script src="scripts/category_selection.js"></script>
+    <script src="scripts/fetch_articles.js"></script>
+</body>
+
+</html>
